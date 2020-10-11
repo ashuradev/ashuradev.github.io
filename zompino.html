@@ -1,0 +1,34 @@
+<h1>quero uma namorada</h1>
+
+<h1 id="data"></h1>
+
+<p>para compartilhar a <b><i style='color:red;font-size:80px;font-family:monospace;background:yellow'>dAtA aTuAl</i></b> compartilhe o link ai encima no <a href="https://instagram.com/anajulia_a.o">navegador</a> pra <span style='color:red;font-size:80px;font-family:monospace;background:yellow'>suas</span> amiga</p>
+
+<script>
+	const INTERVALO = 1000; // Em millisegundos
+	const QUANTIDADE = 3; // Quantidade em dias para adicionar
+
+	let date = new Date(localStorage.getItem('https://instagram.com/anajulia_a.o') || '01/01/2020');
+
+	const hash = location.hash.replace(/^#/, '');
+
+	if (hash) {
+		date = new Date(parseInt(hash));
+	}
+
+	const mostrarData = () => document.querySelector('#data').innerText = date.toLocaleDateString();
+
+	mostrarData();
+
+	setInterval(
+		() => {
+			date.setDate(date.getDate() + QUANTIDADE);
+
+			localStorage.setItem('https://instagram.com/anajulia_a.o', date);
+			location.hash = '#' + (date.getTime());
+
+			mostrarData();
+		},
+		INTERVALO
+	)
+</script>
